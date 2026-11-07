@@ -7,6 +7,7 @@ import { pauseSpotifyWithGame, spotifyPlayer } from './apps/spotify/pauseWithGam
 import { pauseYouTubeWithGame, youtubePlayer } from './apps/youtube/pauseWithGame'
 import { pauseYouTubeMusicWithGame, youtubeMusicPlayer } from './apps/youtubeMusic/pauseWithGame'
 import { pausePlayerWithGame, playerAppPlayer } from './apps/player/pauseWithGame'
+import { pauseRadioWithGame, radioPlayer } from './apps/radio/pauseWithGame'
 import { AppScreen } from './apps/AppScreen'
 import { BootScreen } from './boot/BootScreen'
 import { Dashboard } from './dashboard/Dashboard'
@@ -31,20 +32,21 @@ import { followTimeZone } from './state/timeZone'
 const FOLLOW_POWER = isInHost() || new URLSearchParams(location.search).has('power')
 
 /** The cab's music players. */
-const PLAYERS = [youtubePlayer, spotifyPlayer, appleMusicPlayer, youtubeMusicPlayer, playerAppPlayer]
+const PLAYERS = [youtubePlayer, spotifyPlayer, appleMusicPlayer, youtubeMusicPlayer, playerAppPlayer, radioPlayer]
 
 /** The in-cabin screen: the shell around the screen for the current route, after the boot sequence. */
 export function CabinApp() {
   const route = useCabin((state) => state.navigation.route)
   const phase = useCabin((state) => state.power.phase)
   useEffect(() => connectHost(), [])
-  // YouTube, Spotify, Apple Music, YouTube Music and Player pause with the game (its menu, tabbing out) and play
-  // on after.
+  // YouTube, Spotify, Apple Music, YouTube Music, Player and Radio pause with the game (its menu, tabbing out)
+  // and play on after.
   useEffect(() => pauseYouTubeWithGame(), [])
   useEffect(() => pauseSpotifyWithGame(), [])
   useEffect(() => pauseAppleMusicWithGame(), [])
   useEffect(() => pauseYouTubeMusicWithGame(), [])
   useEffect(() => pausePlayerWithGame(), [])
+  useEffect(() => pauseRadioWithGame(), [])
   // One of them at a time: the newest to start plays on, the others pause (apps/oneAtATime.ts).
   useEffect(() => oneAtATime(PLAYERS), [])
   // The player's keybinds pressed in the game: the music's volume, or play/pause (apps/keybinds.ts).

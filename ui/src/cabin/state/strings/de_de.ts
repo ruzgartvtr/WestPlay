@@ -490,6 +490,7 @@ export const strings: Strings = {
     youtube: 'YouTube',
     youtubeMusic: 'YouTube Music',
     player: 'Player',
+    radio: 'Radio',
     podcasts: 'Podcasts',
     phone: 'Telefon',
     messages: 'Nachrichten',
@@ -504,6 +505,15 @@ export const strings: Strings = {
     addSongs: 'Lege Songs in den Musikordner des Spiels, um sie hier abzuspielen.',
     volume: 'Lautstärke',
     mute: 'Ton aus',
+    unmute: 'Ton an',
+  },
+  radio: {
+    subtitle: 'Türkische Radiosender für die Fahrt.',
+    live: 'Live',
+    connecting: 'Verbinden…',
+    failed: 'Sender konnte nicht abgespielt werden.',
+    volume: 'Lautstärke',
+    mute: 'Stumm',
     unmute: 'Ton an',
   },
 }

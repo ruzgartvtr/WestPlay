@@ -3,6 +3,11 @@
 What changed in each release of WestPlay. The newest release's notes are what the app shows when it offers the
 update.
 
+## Unreleased
+- New on Home: Radio, with Turkish live stations (Power Türk, Slow Türk, Fenomen, JoyTürk, TRT FM and more): play
+  on the truck's screen, Next and Back through the list, on the Dashboard's Now Playing, and pausing with the other
+  music apps and with the game.
+
 ## 2.2.2 (2026-11-06)
 - Prepare Maps Faster, for strong PCs: a switch on the companion's Map page, and a step of its own before WestPlay
   is installed, off unless you turn it on (and tick that you've read what it does). It prepares the maps with every

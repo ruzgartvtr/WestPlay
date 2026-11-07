@@ -492,6 +492,7 @@ export const strings: Strings = {
     youtube: 'YouTube',
     youtubeMusic: 'YouTube Music',
     player: 'Player',
+    radio: 'Radio',
     podcasts: 'Podcast',
     phone: 'Telefono',
     messages: 'Messaggi',
@@ -507,5 +508,14 @@ export const strings: Strings = {
     volume: 'Volume',
     mute: 'Disattiva audio',
     unmute: 'Riattiva audio',
+  },
+  radio: {
+    subtitle: 'Turkish radio stations for the drive.',
+    live: 'Live',
+    connecting: 'Connecting…',
+    failed: 'Couldn’t play this station.',
+    volume: 'Volume',
+    mute: 'Mute',
+    unmute: 'Unmute',
   },
 }

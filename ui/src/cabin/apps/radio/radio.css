@@ -1,0 +1,413 @@
+/* Radio (RadioApp.tsx): Turkish live stations, red key colour (its icon's). */
+
+.shell .radio-app {
+  --rd-key: #e11d48;
+  container: radio / size;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--panel-radius);
+  background: var(--apple-background);
+  color: var(--apple-label);
+  overflow: hidden;
+}
+
+.shell .rd-bar {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 26px 24px 10px 32px;
+}
+
+.shell .rd-title {
+  margin: 0;
+  font-size: calc(40px * var(--text-scale, 1));
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.shell .rd-gap {
+  flex: 1;
+}
+
+.shell .rd-pill {
+  flex: none;
+  height: 40px;
+  padding: 0 18px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--rd-key) 18%, transparent);
+  color: var(--rd-key);
+  font-size: calc(17px * var(--text-scale, 1));
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.shell .rd-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: none;
+  padding: 0 24px 120px;
+  mask-image: linear-gradient(#000 calc(100% - 140px), transparent calc(100% - 40px));
+}
+
+.shell .rd-lead {
+  margin: 0 8px 12px;
+  font-size: calc(18px * var(--text-scale, 1));
+  color: var(--apple-label-secondary);
+}
+
+.shell .rd-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.shell .rd-row {
+  width: 100%;
+  min-height: 84px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 10px 8px;
+  text-align: left;
+  border-bottom: 1px solid var(--apple-separator);
+  border-radius: 0;
+}
+
+.shell .rd-list li:last-child .rd-row {
+  border-bottom: 0;
+}
+
+.shell .rd-row:active {
+  background: var(--apple-fill-quaternary);
+}
+
+.shell .rd-row-words {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.shell .rd-row-name,
+.shell .rd-row-detail {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.shell .rd-row-name {
+  font-size: calc(23px * var(--text-scale, 1));
+  font-weight: 500;
+}
+
+.shell .rd-row-detail {
+  font-size: calc(18px * var(--text-scale, 1));
+  color: var(--apple-label-secondary);
+}
+
+.shell .rd-row.playing .rd-row-name {
+  color: var(--rd-key);
+}
+
+.shell .rd-row-end {
+  flex: none;
+  display: flex;
+  align-items: center;
+  min-width: 28px;
+  justify-content: flex-end;
+}
+
+.shell .rd-mark {
+  flex: none;
+  display: grid;
+  place-items: center;
+  color: #fff;
+}
+
+.shell .rd-mark.row,
+.shell .rd-mark.mini {
+  width: 60px;
+  height: 60px;
+  border-radius: 14px;
+}
+
+.shell .rd-mark.mini {
+  width: 56px;
+  height: 56px;
+}
+
+.shell .rd-mark.row .rd-glyph,
+.shell .rd-mark.mini .rd-glyph {
+  width: 28px;
+  height: 28px;
+}
+
+.shell .rd-mark.now {
+  height: min(100%, 52cqw);
+  aspect-ratio: 1;
+  border-radius: 28px;
+}
+
+.shell .rd-mark.now .rd-glyph {
+  width: 34%;
+  height: 34%;
+}
+
+.shell .rd-bars {
+  width: 24px;
+  height: 22px;
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+}
+
+.shell .rd-bars i {
+  flex: 1;
+  height: 40%;
+  border-radius: 2px;
+  background: var(--rd-key);
+}
+
+.shell .rd-bars i:nth-child(2) {
+  height: 90%;
+}
+
+.shell .rd-bars i:nth-child(3) {
+  height: 60%;
+}
+
+.shell .rd-bars.moving i {
+  animation: rd-bar 0.9s ease-in-out infinite alternate;
+}
+
+.shell .rd-bars.moving i:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.shell .rd-bars.moving i:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes rd-bar {
+  from {
+    height: 30%;
+  }
+  to {
+    height: 100%;
+  }
+}
+
+.shell .rd-loading {
+  width: 22px;
+  height: 22px;
+  border: 3px solid color-mix(in srgb, var(--rd-key) 30%, transparent);
+  border-top-color: var(--rd-key);
+  border-radius: 50%;
+  animation: rd-spin 0.7s linear infinite;
+}
+
+@keyframes rd-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.shell .rd-mini {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  height: 84px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px 0 14px;
+  border-radius: 22px;
+  background: color-mix(in srgb, var(--apple-card) 92%, transparent);
+  backdrop-filter: blur(24px);
+  box-shadow: 0 10px 40px rgb(0 0 0 / 18%);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.shell .rd-mini.away {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px);
+}
+
+.shell .rd-mini-open {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-align: left;
+}
+
+.shell .rd-icon {
+  flex: none;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: var(--apple-label);
+}
+
+.shell .rd-icon.small {
+  width: 44px;
+  height: 44px;
+}
+
+.shell .rd-icon.big {
+  width: 78px;
+  height: 78px;
+  background: var(--apple-label);
+  color: var(--apple-background);
+}
+
+.shell .rd-icon:active {
+  opacity: 0.7;
+}
+
+.shell .rd-icon .rd-glyph {
+  width: 28px;
+  height: 28px;
+}
+
+.shell .rd-icon.big .rd-glyph {
+  width: 36px;
+  height: 36px;
+}
+
+.shell .rd-icon.small .rd-glyph {
+  width: 24px;
+  height: 24px;
+}
+
+.shell .rd-round {
+  flex: none;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--apple-card);
+  color: var(--apple-label);
+}
+
+.shell .rd-round .rd-glyph {
+  width: 28px;
+  height: 28px;
+}
+
+.shell .rd-now {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 40px;
+  padding: 56px 48px 48px;
+  background: var(--apple-background);
+  z-index: 2;
+}
+
+.shell .rd-now-close {
+  position: absolute;
+  top: 22px;
+  left: 22px;
+}
+
+.shell .rd-now-side {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  min-width: 0;
+}
+
+.shell .rd-now-live {
+  font-size: calc(16px * var(--text-scale, 1));
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--rd-key);
+}
+
+.shell .rd-now-title {
+  font-size: calc(42px * var(--text-scale, 1));
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.shell .rd-now-artist {
+  margin-top: 8px;
+  font-size: calc(22px * var(--text-scale, 1));
+  color: var(--apple-label-secondary);
+}
+
+.shell .rd-now-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+}
+
+.shell .rd-volume {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.shell .rd-volume-bar {
+  flex: 1;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--apple-fill-tertiary);
+  position: relative;
+  touch-action: none;
+}
+
+.shell .rd-volume-bar span {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: calc(var(--share, 1) * 100%);
+  border-radius: inherit;
+  background: var(--apple-label);
+}
+
+.shell .rd-volume-bar.dragging span {
+  background: var(--rd-key);
+}
+
+@container radio (max-width: 900px) {
+  .shell .rd-now {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    padding: 72px 36px 40px;
+    gap: 28px;
+  }
+
+  .shell .rd-mark.now {
+    height: min(42cqh, 48cqw);
+  }
+
+  .shell .rd-now-side {
+    width: 100%;
+    align-items: center;
+  }
+
+  .shell .rd-volume {
+    width: min(100%, 420px);
+  }
+}

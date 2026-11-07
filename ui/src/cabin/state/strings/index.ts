@@ -488,6 +488,17 @@ export interface Strings {
     mute: string
     unmute: string
   }
+  /** Radio: Turkish live stations on the truck's screen. */
+  radio: {
+    /** Line under the title on the list. */
+    subtitle: string
+    live: string
+    connecting: string
+    failed: string
+    volume: string
+    mute: string
+    unmute: string
+  }
 }
 
 const STRINGS: Record<string, Strings> = Object.fromEntries(

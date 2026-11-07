@@ -485,6 +485,7 @@ export const strings: Strings = {
     youtube: 'YouTube',
     youtubeMusic: 'YouTube Music',
     player: 'Player',
+    radio: 'Radyo',
     podcasts: 'Podcast’ler',
     phone: 'Telefon',
     messages: 'Mesajlar',
@@ -497,6 +498,15 @@ export const strings: Strings = {
   player: {
     noSongs: 'Şarkı yok',
     addSongs: 'Burada çalmak için oyunun müzik klasörüne şarkı koy.',
+    volume: 'Ses',
+    mute: 'Sesi Kapat',
+    unmute: 'Sesi Aç',
+  },
+  radio: {
+    subtitle: 'Yol için Türk radyoları.',
+    live: 'Canlı',
+    connecting: 'Bağlanıyor…',
+    failed: 'Bu istasyon çalınamadı.',
     volume: 'Ses',
     mute: 'Sesi Kapat',
     unmute: 'Sesi Aç',

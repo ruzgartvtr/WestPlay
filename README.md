@@ -67,7 +67,7 @@ screen, used with the mouse while you hold a key.
       <h3>Your music</h3>
       Apple Music, Spotify and YouTube Music, with Now Playing and lyrics. A song's music video plays right in
       Now Playing, and YouTube has its channels, playlists, captions and quality. Player plays the songs you put
-      in the game's own music folder.
+      in the game's own music folder. Radio plays Turkish live stations on the drive.
     </td>
     <td width="50%" valign="top">
       <picture>

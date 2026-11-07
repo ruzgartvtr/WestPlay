@@ -485,6 +485,7 @@ export const strings: Strings = {
     youtube: 'YouTube',
     youtubeMusic: 'YouTube Music',
     player: 'Player',
+    radio: 'Radio',
     podcasts: 'Podcast',
     phone: 'Điện thoại',
     messages: 'Tin nhắn',
@@ -500,5 +501,14 @@ export const strings: Strings = {
     volume: 'Âm lượng',
     mute: 'Tắt tiếng',
     unmute: 'Bật tiếng',
+  },
+  radio: {
+    subtitle: 'Turkish radio stations for the drive.',
+    live: 'Live',
+    connecting: 'Connecting…',
+    failed: 'Couldn’t play this station.',
+    volume: 'Volume',
+    mute: 'Mute',
+    unmute: 'Unmute',
   },
 }

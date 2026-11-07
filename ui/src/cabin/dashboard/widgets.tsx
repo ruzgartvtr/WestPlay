@@ -18,6 +18,7 @@ import {
   useYouTubeMusicSource,
 } from '../apps/youtubeMusic/youtubeMusic'
 import { playOrPause as playOrPausePlayer, skip as skipPlayer, usePlayer, usePlayerSource } from '../apps/player/player'
+import { playOrPause as playOrPauseRadio, skip as skipRadio, useRadio, useRadioSource } from '../apps/radio/radio'
 import type { MediaAction, MediaSource } from '../../shared/media'
 import { useLook } from '../state/hooks'
 import { go, useCabin } from '../state/store'
@@ -38,7 +39,7 @@ import { cabClock } from '../../shared/host'
  */
 export function NowPlayingWidget() {
   const shown = useCabin((state) => state.dashboardWidgets.nowPlaying)
-  const { showing, spotify, appleMusic, youtubeMusic, player } = useNowPlaying()
+  const { showing, spotify, appleMusic, youtubeMusic, player, radio } = useNowPlaying()
   return (
     <div className={`widget-slot${shown ? ' open' : ''}`}>
       {shown && showing === 'video' && <VideoWidget />}
@@ -46,6 +47,7 @@ export function NowPlayingWidget() {
       {shown && showing === 'appleMusic' && appleMusic && <AppleMusicWidget appleMusic={appleMusic} />}
       {shown && showing === 'youtubeMusic' && youtubeMusic && <YouTubeMusicWidget youtubeMusic={youtubeMusic} />}
       {shown && showing === 'player' && player && <PlayerWidget player={player} />}
+      {shown && showing === 'radio' && radio && <RadioWidget radio={radio} />}
       {shown && showing === null && <MusicWidget source={null} artwork={null} onControl={() => {}} />}
     </div>
   )
@@ -103,6 +105,25 @@ function PlayerWidget({ player }: { player: NonNullable<ReturnType<typeof usePla
         if (action === 'playPause') playOrPausePlayer()
         else if (action === 'next') skipPlayer(1)
         else if (action === 'previous') skipPlayer(-1)
+      }}
+    />
+  )
+}
+
+/** Radio's live station: what plays, its controls, opening Radio on Now Playing. */
+function RadioWidget({ radio }: { radio: NonNullable<ReturnType<typeof useRadioSource>> }) {
+  return (
+    <MusicWidget
+      source={radio.source}
+      artwork={radio.artwork}
+      onOpen={() => {
+        useRadio.setState({ nowPlaying: true })
+        go({ type: 'openApp', app: 'radio' })
+      }}
+      onControl={(action) => {
+        if (action === 'playPause') playOrPauseRadio()
+        else if (action === 'next') skipRadio(1)
+        else if (action === 'previous') skipRadio(-1)
       }}
     />
   )
